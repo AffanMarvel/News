@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script src="angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="AddNews.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Add News</title>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script>
+
+        var script_url = "https://script.google.com/macros/s/AKfycbxZVR8GZcd6X3X4vDe1_0p2GiC_Rm3JVT9s8Ycr-xLdf1PIzxDP2oWPEXSTGVP1T8F2/exec";
+
+        // Make an AJAX call to Google Script
+        function insert_value() {
+
+            $("#Tittle").css("visibility", "hidden");
+            document.getElementById("loader").style.visibility = "visible";
+            $('#mySpinner').addClass('spinner');
+
+            var id1 = $("#Tittle").val();
+            var name = $("#Description").val();
+            var Image = $("#Image").val();
+
+
+            var url = script_url + "?callback=ctrlq&name=" + name + "&id=" + id1 + "&Image=" + Image + "&action=insert";
+
+
+            var request = jQuery.ajax({
+                crossDomain: true,
+                url: url,
+                method: "GET",
+                dataType: "jsonp"
+            });
+
+        }
+
+
+
+
+
+
+
+        function update_value() {
+            $("#re").css("visibility", "hidden");
+            document.getElementById("loader").style.visibility = "visible";
+
+
+            var id1 = $("#Tittle").val();
+            var name = $("#Description").val();
+
+
+
+            var url = script_url + "?callback=ctrlq&name=" + name + "&id=" + id1 + "&action=update";
+
+
+            var request = jQuery.ajax({
+                crossDomain: true,
+                url: url,
+                method: "GET",
+                dataType: "jsonp"
+            });
+
+
+        }
+
+
+
+
+
+        function delete_value() {
+            $("#re").css("visibility", "hidden");
+            document.getElementById("loader").style.visibility = "visible";
+            $('#mySpinner').addClass('spinner');
+            var id1 = $("#Tittle").val();
+            var name = $("#Description").val();
+
+
+            var url = script_url + "?callback=ctrlq&name=" + name + "&id=" + id1 + "&action=delete";
+
+
+            var request = jQuery.ajax({
+                crossDomain: true,
+                url: url,
+                method: "GET",
+                dataType: "jsonp"
+            });
+
+        }
+
+
+
+
+        // print the returned data
+        function ctrlq(e) {
+
+
+            $("#re").html(e.result);
+            $("#re").css("visibility", "visible");
+            read_value();
+
+        }
+
+
+
+
+        function read_value() {
+
+            $("#re").css("visibility", "hidden");
+
+            document.getElementById("loader").style.visibility = "visible";
+            var url = script_url + "?action=read";
+
+            $.getJSON(url, function (json) {
+
+                // Set the variables from the results array
+
+
+
+
+                // CREATE DYNAMIC TABLE.
+                var table = document.createElement("table");
+
+
+
+                var header = table.createTHead();
+                var row = header.insertRow(0);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+
+                cell1.innerHTML = "<b>ID</b>";
+                cell2.innerHTML = "<b>Name</b>";
+
+                // ADD JSON DATA TO THE TABLE AS ROWS.
+                for (var i = 0; i < json.records.length; i++) {
+
+                    tr = table.insertRow(-1);
+                    var tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = json.records[i].Tittle;
+                    tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = json.records[i].Description;
+                }
+
+
+                // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+                var divContainer = document.getElementById("showData");
+                divContainer.innerHTML = "";
+                divContainer.appendChild(table);
+                document.getElementById("loader").style.visibility = "hidden";
+                $("#re").css("visibility", "visible");
+            });
+        }
+
+    </script>
+
+</head>
+
+
+<body>
+
+    <section class="BG">
+
+        <section class="form">
+
+            <div class="container">
+                <header><img src="image/Logo1.png" alt=""></header>
+                <form method="post" name="Affan-Marvel">
+                    <div class="input-filed">
+                        <input type="text" class="Tittle" required name="Tittle" id="Tittle">
+                        <label>Enter News Title</label>
+                    </div>
+
+                    <div class="input-filed">
+                        <input type="text" class="Des" required name="Description" id="Description">
+                        <label>Add Description</label>
+                    </div>
+
+                    <!-- <div class="img">
+                        <input type="file" accept="image/*">
+                        <label class="file">
+                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                            Add Image</label>
+                    </div> -->
+
+
+
+
+
+
+
+                    <!-- <div class="con">
+                    <figure class="image-container">
+                        <img id="chosen-image">
+                        <figcaption id="file-name"></figcaption>
+                    </figure>
+
+
+                    <input type="file" id="upload-button" class="Img" accept="image/*" required id="Image" name="Image">
+                    <label for="upload-button" class="label">
+                        <i class="fa fa-upload" aria-hidden="true"></i> &nbsp;
+                        Choose A Photo
+                    </label>
+                </div> -->
+
+
+                    <!-- <div class="button">
+                    <div class="inner">
+                        <button><input type="submit" name="submit" value="">Add News</button>
+                    </div>
+                </div> -->
+
+                </form>
+
+
+                <div id="loader"></div>
+                <form>
+                    <p id="re"></p>
+                    <div class="button">
+                        <div class="inner">
+                            <input type="button" class="in" id="b1" onClick="insert_value()" value="Add"></input>
+                        </div>
+                    </div>
+
+                    <div class="button">
+                        <div class="inner">
+                            <input type="button" class="up" onclick="update_value()" value="Change" />
+                        </div>
+                    </div>
+
+                    <div class="button">
+                        <div class="inner">
+                            <input type="button" class="de" onclick="delete_value()" value="Delete" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </section>
+
+
+</body>
+
+</html>

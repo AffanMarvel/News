@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <script src="angular.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Affan Marvel News</title>
+
+
+
+
+
+
+
+
+
+    <!-- Read News -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+
+    <script>
+
+        var script_url = "https://script.google.com/macros/s/AKfycbxZVR8GZcd6X3X4vDe1_0p2GiC_Rm3JVT9s8Ycr-xLdf1PIzxDP2oWPEXSTGVP1T8F2/exec";
+
+        // print the returned data
+        function ctrlq(e) {
+
+
+            $("#re").html(e.result);
+            $("#re").css("visibility", "visible");
+            read_value();
+
+        }
+
+
+
+
+        function read_value() {
+
+            $("#re").css("visibility", "hidden");
+
+            document.getElementById("loader").style.visibility = "visible";
+            var url = script_url + "?action=read";
+
+            $.getJSON(url, function (json) {
+
+                // Set the variables from the results array
+
+
+
+
+                // CREATE DYNAMIC TABLE.
+                var table = document.createElement("table");
+
+
+
+                var header = table.createTHead();
+                var row = header.insertRow(0);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+
+                cell1.innerHTML = "<b>   Tittle   </b>";
+                cell2.innerHTML = "<b>Description</b>";
+
+                // ADD JSON DATA TO THE TABLE AS ROWS.
+                for (var i = 0; i < json.records.length; i++) {
+
+                    tr = table.insertRow(-1);
+                    var tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = json.records[i].Tittle;
+                    tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = json.records[i].Description;
+                }
+
+
+                // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+                var divContainer = document.getElementById("showData");
+                divContainer.innerHTML = "";
+                divContainer.appendChild(table);
+                document.getElementById("loader").style.visibility = "hidden";
+                $("#re").css("visibility", "visible");
+            });
+        }
+    </script>
+
+</head>
+
+
+<body bgcolor= >
+    <script src="index.js"></script>
+
+
+
+
+    <!-- Header Secction -->
+
+    <section class="header">
+
+        <nav>
+            <a href="index.html"><img src="image/Logo1.png" alt=""></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="HideMenu()"></i>
+                <ul>
+                    <li><a href="Pages/News.html">News</a></li>
+                    <li><a href="">MCU</a></li>
+                    <li><a href="">DCU</a></li>
+                    <li><a href="">Anime</a></li>
+                    <li><a href="">Comics</a></li>
+                    <li><a href="Pages/AddNews.html" target="_blank">Add News</a></li>
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="ShowMenu()"></i>
+        </nav>
+
+        <div class="text-box">
+            <h1>Affan Marvel</h1>
+            <a href="" class="btn-more">Visit Us To Know More</a>
+        </div>
+
+    </section>
+
+
+
+    <!--About News -->
+
+    <section class="News">
+        <h1>News Category</h1>
+
+        <div class="row">
+            <div class="news-col">
+                <h3>Marvel</h3>
+                <p>marve Univers is vary Big Univers And ther are so many Super Herows in this Univers</p>
+            </div>
+
+            <div class="news-col">
+                <h3>DC</h3>
+                <p>marve Univers is vary Big Univers And ther are so many Super Herows in this Univers</p>
+            </div>
+
+            <div class="news-col">
+                <h3>Anime</h3>
+                <p>marve Univers is vary Big Univers And ther are so many Super Herows in this Univers</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Super Heros -->
+
+    <section class="SuperHeros">
+
+        <h1>Super Heros</h1>
+
+        <div class="row">
+            <div class="Hero-col">
+                <img src="image/hero/Captan.jpg" alt="">
+                <div class="layer1">
+                    <h3>Captain America</h3>
+                </div>
+            </div>
+
+            <div class="Hero-col">
+                <img src="image/hero/DrS.jpg" alt="">
+                <div class="layer2">
+                    <h3>Doctor Strange</h3>
+                </div>
+            </div>
+
+            <div class="Hero-col">
+                <img src="image/hero/IronMan.jpg" alt="">
+                <div class="layer3">
+                    <h3>Iron Man</h3>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </section>
+
+
+
+
+
+    <!-- News -->
+
+    <section class="News">
+        <h1>News</h1>
+
+        <div class="row">
+            <div class="News-col">
+                <img src="image/Content/SpiderTony.jpg" alt="">
+                <h3>Spider Man & Tony Stark</h3>
+                <p>Spider Man And Tony Stark are vary simelar for the all content Ther are relation is vary close like
+                    father and son.</p>
+            </div>
+
+            <div class="News-col">
+                <img src="image/Content/Oscar.jpg" alt="">
+                <h3>Spider Man No way Home win Oscar</h3>
+                <p>Spider Man And Tony Stark are vary simelar for the all content Ther are relation is vary close like
+                    father and son.</p>
+            </div>
+
+            <div class="News-col">
+                <img src="image/Content/Osker.jfif" alt="">
+                <h3>No way Home Oscar</h3>
+                <p>Spider Man And Tony Stark are vary simelar for the all content Ther are relation is vary close like
+                    father and son.</p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="News-col">
+                <img src="image/Content/kingpin-daredevil.jpg" alt="">
+                <h3>Kingpin in Daredevil</h3>
+                <p>Spider Man And Tony Stark are vary simelar for the all content Ther are relation is vary close like
+                    father and son.</p>
+            </div>
+
+            <div class="News-col">
+                <img src="image/Content/Hawkman.jpg" alt="">
+                <h3>Hawkman</h3>
+                <p>Spider Man And Tony Stark are vary simelar for the all content Ther are relation is vary close like
+                    father and son.</p>
+            </div>
+
+            <div class="News-col">
+                <img src="image/Content/black-adam.jpg" alt="">
+                <h3>Black Adam</h3>
+                <p>Spider Man And Tony Stark are vary simelar for the all content Ther are relation is vary close like
+                    father and son.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- <div id="loader"></div>
+
+
+
+
+    <p id="re"></p>
+
+    <input type="button" onclick="read_value()" value="Read" />
+    <div id="showData"></div> -->
+
+
+
+
+
+
+
+
+
+    <!-- Footer -->
+
+    <Section class="Footer">
+        <h4>About Us</h4>
+        <p>Love You 3000! Thanks for Watch My Website.</p>
+
+        <div class="icon">
+            <i class="fa fa-faceook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+            <i class="fa fa-youtube-play"></i>
+        </div>
+    </Section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Java Script -->
+    <script>
+        var navLinks = document.getElementById("navLinks")
+
+        function ShowMenu() {
+            navLinks.style.right = "0";
+        }
+        function HideMenu() {
+            navLinks.style.right = "-200px";
+        }
+    </script>
+
+
+
+</body>
+
+
+</html>

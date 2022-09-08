@@ -1,0 +1,459 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+/* navbar */
+
+.header{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(image/Marvel.jpg);
+    background-position: center;
+    background-size: contain;
+    position: relative;
+}
+
+@media(max-width: 700px){
+    .header{
+        min-height: 100vh;
+        width: 100%;
+        background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)),url(image/Marvel.jpg);
+        background-position: center;
+        background-size: cover;
+        position: relative;
+    }
+}
+
+nav{
+    display: flex;
+    padding: 2% 6%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img{
+    width: 150px;
+}
+
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 8px 12px;
+    position: relative;
+}
+
+.nav-links ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 19px;
+    position: relative
+}
+
+.nav-links ul li a::after{
+    content: '';
+    width: 0%;
+    height: 2%;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+    position: absolute;
+}
+
+.nav-links ul li a:hover::after{
+    width: 100%;
+}
+
+
+
+
+.text-box{
+    width: 90%;
+    color: rgb(0, 119, 255);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.text-box h1{
+    font-size: 69px;
+}
+
+.btn-more{
+    display: inline-block;
+    text-decoration: none;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    font-size: 20px;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+}
+
+.btn-more:hover{
+    border: 1px solid #03d6fc;
+    background: #2b4c57;
+    transition: 1s;
+}
+
+
+nav .fa{
+    display: none;
+}
+
+
+
+@media(max-width: 700px){
+    .text-box h1{
+        font-size: 20px;
+    }
+
+    .btn-more{
+        display: inline-block;
+        text-decoration: none;
+        border: 1px solid #fff;
+        padding: 12px 34px;
+        font-size: 13px;
+        background: transparent;
+        position: relative;
+        cursor: pointer;
+        color: rgb(255, 255, 255);
+    }
+    
+    .btn-more:hover{
+        border: 1px solid #03d6fc;
+        background: #2b4c57;
+        transition: 1s;
+    }
+
+
+    .nav-links ul li{
+        display: block;
+    }
+    .nav-links{
+        position: absolute;
+        background: #f44336;
+        height: 100vh;
+        width: 200px;
+        top: 0;
+        right: -200px;
+        text-align: left;
+        z-index: 2;
+        transition: 1s;
+    }
+
+    nav .fa{
+        display: block;
+        color: #fff;
+        margin: 10px;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+    .nav-links ul{
+        padding: 30px;
+    }
+}
+
+
+
+/* News */
+
+.News{
+    width: 80%;
+    margin: auto;
+    padding-top: 100px;
+    text-align: center;
+}
+
+h1{
+    font-size: 36px;
+    font-weight: 600;
+}
+
+
+
+.row{
+    margin: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-col{
+    flex-basis: 31%;
+    background-color: #9f04ce;
+    border-radius: 10px;
+    margin-bottom: 5%;
+    padding: 20px 12px;
+    box-sizing: border-box;
+    transition: 0.5s;
+}
+
+h3{
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+
+.news-col:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+
+
+@media(max-width: 700px){
+    .row{
+        flex-direction: column;
+    }
+}
+
+
+
+
+
+
+
+/* Super Heros */
+
+
+
+.SuperHeros{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+}
+
+
+.Hero-col{
+    flex-basis: 32%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+    
+}
+
+
+.Hero-col img{
+    width: 100%;
+    display: block;
+}
+
+
+
+
+/* caption America */
+
+.layer1{
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 1s;
+}
+
+.layer1:hover{
+    background: rgba(149, 47, 233, 0.548);
+}
+
+
+.layer1 h3{
+    width: 100%;
+    font-weight: 500;
+    color: rgb(0, 217, 255);
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: 1s;
+}
+
+.layer1:hover h3{
+    bottom: 49%;
+    opacity: 1;
+}
+
+
+
+
+/* Doctor Strange */
+
+
+.layer2{
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 1s;
+}
+
+.layer2:hover{
+    background: rgba(51, 60, 63, 0.596);
+}
+
+
+.layer2 h3{
+    width: 100%;
+    font-weight: 500;
+    color: rgb(26, 158, 0);
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: 1s;
+}
+
+.layer2:hover h3{
+    bottom: 49%;
+    opacity: 1;
+}
+
+
+
+
+
+
+/* Iron Man */
+
+
+.layer3{
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 1s;
+}
+
+.layer3:hover{
+    background: rgba(92, 75, 62, 0.568);
+}
+
+
+.layer3 h3{
+    width: 100%;
+    font-weight: 500;
+    color: rgb(255, 238, 0);
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    position: absolute;
+    opacity: 0;
+    transition: 1s;
+}
+
+.layer3:hover h3{
+    bottom: 49%;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* News */
+
+
+.News{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding-top: 150px;
+}
+
+
+.News-col{
+    flex-basis: 31%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.News-col img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.News-col p{
+    padding: 0;
+}
+
+.News-col h3{
+    margin-top: 7px;
+    margin-bottom: 11px;
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+/* Footer */
+
+
+.Footer{
+    width: 100%;
+    text-align: center;
+    padding: 30px 0;
+    background: #1e2527;
+}
+
+.Footer{
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.icon .fa{
+    color: #00ffdd; 
+    margin: 0 18px;
+    cursor: pointer;
+    padding: 19px 0;
+    
+}
+
+.Footer h4{
+    color: #03d6fc;
+}
+
+.Footer p{
+    color: wheat;
+}
+
+
+
