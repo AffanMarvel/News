@@ -188,7 +188,7 @@
                     <li><a href="">Anime</a></li>
                     <li><a href="">Comics</a></li>
                     <li><a href="AddNews.html" target="_blank">Add News</a></li>
-                    <li><a href="affanmarvel.github.io/News">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="ShowMenu()"></i>
@@ -265,7 +265,17 @@
         </div>
     </Section>
 
+ <!-- Java Script -->
+    <script>
+        var navLinks = document.getElementById("navLinks")
 
+        function ShowMenu() {
+            navLinks.style.right = "0";
+        }
+        function HideMenu() {
+            navLinks.style.right = "-200px";
+        }
+    </script>
 </body>
 
 
